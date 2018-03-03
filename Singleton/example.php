@@ -8,13 +8,12 @@
 
 require_once "Singleton.php";
 
-use Patterns\Singleton\Singleton;
+use DesignPatterns\Singleton\Entity;
 
-$entity1 = Singleton::getIstance();
+$entity1 = Entity::getIstance();
 $entity1->incIterator();
-$entity1->test();
 var_dump($entity1->getIterator());
 
-$entity2 = Singleton::getIstance();
+$entity2 = Entity::getIstance();
 $entity2->incIterator();
 var_dump($entity2->getIterator());

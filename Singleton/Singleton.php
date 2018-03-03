@@ -6,13 +6,13 @@
  * Time: 9:42
  */
 
-namespace Patterns\Singleton;
+namespace DesignPatterns\Singleton;
 
 /**
  * Class Singleton
  * @package Patterns\Singleton
  */
-class Singleton{
+class Entity{
     /**
      * @var null
      */
