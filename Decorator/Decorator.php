@@ -8,63 +8,109 @@
 
 namespace DesignPatterns\Decorator;
 
-interface IData
-{
+/**
+ * Interface IData
+ * @package DesignPatterns\Decorator
+ */
+interface IData{
+    /**
+     * @return mixed
+     */
     public function getData();
 }
 
-class Message implements IData
-{
+/**
+ * Class SimpleMessage
+ * @package DesignPatterns\Decorator
+ */
+class SimpleMessage implements IData{
+    /**
+     * @var string
+     */
     protected $message;
 
-    public function __construct(string $message) {
+    /**
+     * SimpleMessage constructor.
+     * @param string $message
+     */
+    public function __construct(string $message){
         $this->message = $message;
     }
 
+    /**
+     * @return string
+     */
     public function getData() : string
     {
         return $this->message;
     }
 }
 
-class BoldMessage implements IData
-{
-    protected $object;
+/**
+ * Class AbstractData
+ * @package DesignPatterns\Decorator
+ */
+abstract class AbstractData implements IData{
+    /**
+     * @var IData
+     */
+    protected $data;
 
-    public function __construct(IData $data) {
-        $this->object = $data;
+    /**
+     * AbstractData constructor.
+     * @param IData $data
+     */
+    public function __construct(IData $data){
+        $this->data = $data;
     }
 
-    public function getData() : string
+    /**
+     * @return string
+     */
+    public function getParagraphData() : string
     {
-        return "<b>" . $this->object->getData() . "</b>";
+        return "<p>" . $this->data->getData() . "</p>";
     }
 }
 
-class ItalicMessage implements IData
-{
-    protected $object;
-
-    public function __construct(IData $data) {
-        $this->object = $data;
-    }
-
+/**
+ * Class BoldData
+ * @package DesignPatterns\Decorator
+ */
+class BoldData extends AbstractData{
+    /**
+     * @return string
+     */
     public function getData() : string
     {
-        return "<i>" . $this->object->getData() . "</i>";
+        return "<b>" . $this->data->getData() . "</b>";
     }
 }
 
-class LineBreakMessage implements IData
-{
-    protected $object;
-
-    public function __construct(IData $data) {
-        $this->object = $data;
-    }
-
+/**
+ * Class ItalicData
+ * @package DesignPatterns\Decorator
+ */
+class ItalicData extends AbstractData{
+    /**
+     * @return string
+     */
     public function getData() : string
     {
-        return $this->object->getData() . "<br>";
+        return "<i>" . $this->data->getData() . "</i>";
+    }
+}
+
+/**
+ * Class LineBreakData
+ * @package DesignPatterns\Decorator
+ */
+class LineBreakData extends AbstractData{
+    /**
+     * @return string
+     */
+    public function getData() : string
+    {
+        return $this->data->getData() . "<br>";
     }
 }

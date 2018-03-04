@@ -10,31 +10,34 @@ require_once "Decorator.php";
 
 use DesignPatterns\Decorator;
 
-$simpleMessage = new Decorator\LineBreakMessage(
-    new Decorator\Message("Simple string")
+$simpleMessage = new Decorator\LineBreakData(
+    new Decorator\SimpleMessage("Simple string")
 );
 echo $simpleMessage->getData();
+echo $simpleMessage->getParagraphData();
 
-$boldMessage = new Decorator\LineBreakMessage(
-    new Decorator\BoldMessage(
-        new Decorator\Message("Bold string")
+$boldMessage = new Decorator\LineBreakData(
+    new Decorator\BoldData(
+        new Decorator\SimpleMessage("Bold string")
     )
 );
 echo $boldMessage->getData();
+echo $boldMessage->getParagraphData();
 
-$italicMessage = new Decorator\LineBreakMessage(
-    new Decorator\ItalicMessage(
-        new Decorator\Message("Italic string")
+$italicMessage = new Decorator\LineBreakData(
+    new Decorator\ItalicData(
+        new Decorator\SimpleMessage("Italic string")
     )
 );
 echo $italicMessage->getData();
+echo $italicMessage->getParagraphData();
 
-$italicBoldMessage = new Decorator\LineBreakMessage(
-    new Decorator\ItalicMessage(
-        new Decorator\BoldMessage(
-            new Decorator\Message("Italic bold string")
+$italicBoldMessage = new Decorator\LineBreakData(
+    new Decorator\ItalicData(
+        new Decorator\BoldData(
+            new Decorator\SimpleMessage("Italic bold string")
         )
     )
 );
-
 echo $italicBoldMessage->getData();
+echo $italicBoldMessage->getParagraphData();
