@@ -2,7 +2,7 @@
 /**
  * Created by PhpStorm.
  * User: petrvakulenko
- * Date: 02.03.18
+ * Date: 02.03.2018
  * Time: 9:42
  */
 
