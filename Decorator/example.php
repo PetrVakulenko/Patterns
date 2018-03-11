@@ -8,34 +8,39 @@
 
 require_once "Decorator.php";
 
-use DesignPatterns\Decorator;
+use DesignPatterns\Decorator\{
+    SimpleMessage,
+    LineBreakData,
+    ItalicData,
+    BoldData
+};
 
-$simpleMessage = new Decorator\LineBreakData(
-    new Decorator\SimpleMessage("Simple string")
+$simpleMessage = new LineBreakData(
+    new SimpleMessage("Simple string")
 );
 echo $simpleMessage->getData();
 echo $simpleMessage->getParagraphData();
 
-$boldMessage = new Decorator\LineBreakData(
-    new Decorator\BoldData(
-        new Decorator\SimpleMessage("Bold string")
+$boldMessage = new LineBreakData(
+    new BoldData(
+        new SimpleMessage("Bold string")
     )
 );
 echo $boldMessage->getData();
 echo $boldMessage->getParagraphData();
 
-$italicMessage = new Decorator\LineBreakData(
-    new Decorator\ItalicData(
-        new Decorator\SimpleMessage("Italic string")
+$italicMessage = new LineBreakData(
+    new ItalicData(
+        new SimpleMessage("Italic string")
     )
 );
 echo $italicMessage->getData();
 echo $italicMessage->getParagraphData();
 
-$italicBoldMessage = new Decorator\LineBreakData(
-    new Decorator\ItalicData(
-        new Decorator\BoldData(
-            new Decorator\SimpleMessage("Italic bold string")
+$italicBoldMessage = new LineBreakData(
+    new ItalicData(
+        new BoldData(
+            new SimpleMessage("Italic bold string")
         )
     )
 );
