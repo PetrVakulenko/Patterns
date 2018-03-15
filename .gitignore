@@ -1,0 +1,9 @@
+#Ignore extensions
+*.diff
+*.err
+*.log
+*.zip
+*~
+
+#Ignore folders
+./idea
