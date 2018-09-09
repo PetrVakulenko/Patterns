@@ -1,18 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: petrvakulenko
- * Date: 02.03.2018
- * Time: 9:42
- */
 
 namespace DesignPatterns\Singleton;
 
 /**
  * Class Singleton
+ *
  * @package Patterns\Singleton
  */
-class Entity{
+class Entity
+{
     /**
      * @var null
      */
@@ -25,36 +21,47 @@ class Entity{
     /**
      * Private Singleton __constructor, __wakeup and __clone
      */
-    private function __construct(){}
-    private function __wakeup(){}
-    private function __clone(){}
+    private function __construct()
+    {
+    }
 
-    /**
-     * @param string $name
-     * @param $arguments
-     */
-    public function __call($name, $arguments){
-        echo "Undefined method '".$name."'.".
-            (count($arguments) > 0
-            ? "Arguments: ".implode(',',$arguments)."."
-            : "");
+    private function __wakeup()
+    {
+    }
+
+    private function __clone()
+    {
     }
 
     /**
      * @param string $name
      * @param $arguments
      */
-    public static function __callStatic($name, $arguments){
-        echo "Undefined static method '".$name."'.".
+    public function __call($name, $arguments)
+    {
+        echo "Undefined method '" . $name . "'." .
             (count($arguments) > 0
-            ? "Arguments: ".implode(',',$arguments)."."
-            : "");
+                ? "Arguments: " . implode(',', $arguments) . "."
+                : "");
+    }
+
+    /**
+     * @param string $name
+     * @param $arguments
+     */
+    public static function __callStatic($name, $arguments)
+    {
+        echo "Undefined static method '" . $name . "'." .
+            (count($arguments) > 0
+                ? "Arguments: " . implode(',', $arguments) . "."
+                : "");
     }
 
     /**
      * @return static instance|new static instance
      */
-    public static function getIstance(){
+    public static function getIstance()
+    {
         return self::$instance === null
             ? self::$instance = new static() //new self()
             : self::$instance;
@@ -63,14 +70,15 @@ class Entity{
     /**
      * Incrementation of iterator
      */
-    public function incIterator() {
+    public function incIterator()
+    {
         $this->iterator++;
     }
 
     /**
      * @return int
      */
-    public function getIterator() : int
+    public function getIterator(): int
     {
         return $this->iterator;
     }

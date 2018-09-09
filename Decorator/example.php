@@ -1,19 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: petrvakulenko
- * Date: 03.03.2018
- * Time: 17:46
- */
 
 require_once "Decorator.php";
 
-use DesignPatterns\Decorator\{
-    SimpleMessage,
-    LineBreakData,
-    ItalicData,
-    BoldData
-};
+use DesignPatterns\Decorator\SimpleMessage;
+use DesignPatterns\Decorator\LineBreakData;
+use DesignPatterns\Decorator\ItalicData;
+use DesignPatterns\Decorator\BoldData;
 
 $simpleMessage = new LineBreakData(
     new SimpleMessage("Simple string")

@@ -9,9 +9,14 @@ web.config
 *.o
 *.so
 
+# Files
+*.json
+*.xml
+*.csv
+
 # Folders
 ./vendor
-./idea
+/.idea
 
 # compressed file extensions
 *.7z

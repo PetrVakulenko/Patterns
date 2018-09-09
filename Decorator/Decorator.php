@@ -1,18 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: petrvakulenko
- * Date: 03.03.2018
- * Time: 17:29
- */
 
 namespace DesignPatterns\Decorator;
 
 /**
  * Interface IData
+ *
  * @package DesignPatterns\Decorator
  */
-interface IData{
+interface IData
+{
     /**
      * @return mixed
      */
@@ -21,9 +17,11 @@ interface IData{
 
 /**
  * Class SimpleMessage
+ *
  * @package DesignPatterns\Decorator
  */
-class SimpleMessage implements IData{
+class SimpleMessage implements IData
+{
     /**
      * @var string
      */
@@ -31,16 +29,18 @@ class SimpleMessage implements IData{
 
     /**
      * SimpleMessage constructor.
+     *
      * @param string $message
      */
-    public function __construct(string $message){
+    public function __construct(string $message)
+    {
         $this->message = $message;
     }
 
     /**
      * @return string
      */
-    public function getData() : string
+    public function getData(): string
     {
         return $this->message;
     }
@@ -48,9 +48,11 @@ class SimpleMessage implements IData{
 
 /**
  * Class AbstractData
+ *
  * @package DesignPatterns\Decorator
  */
-abstract class AbstractData implements IData{
+abstract class AbstractData implements IData
+{
     /**
      * @var IData
      */
@@ -58,16 +60,18 @@ abstract class AbstractData implements IData{
 
     /**
      * AbstractData constructor.
+     *
      * @param IData $data
      */
-    public function __construct(IData $data){
+    public function __construct(IData $data)
+    {
         $this->data = $data;
     }
 
     /**
      * @return string
      */
-    public function getParagraphData() : string
+    public function getParagraphData(): string
     {
         return "<p>" . $this->data->getData() . "</p>";
     }
@@ -75,13 +79,15 @@ abstract class AbstractData implements IData{
 
 /**
  * Class BoldData
+ *
  * @package DesignPatterns\Decorator
  */
-class BoldData extends AbstractData{
+class BoldData extends AbstractData
+{
     /**
      * @return string
      */
-    public function getData() : string
+    public function getData(): string
     {
         return "<b>" . $this->data->getData() . "</b>";
     }
@@ -89,13 +95,15 @@ class BoldData extends AbstractData{
 
 /**
  * Class ItalicData
+ *
  * @package DesignPatterns\Decorator
  */
-class ItalicData extends AbstractData{
+class ItalicData extends AbstractData
+{
     /**
      * @return string
      */
-    public function getData() : string
+    public function getData(): string
     {
         return "<i>" . $this->data->getData() . "</i>";
     }
@@ -103,13 +111,15 @@ class ItalicData extends AbstractData{
 
 /**
  * Class LineBreakData
+ *
  * @package DesignPatterns\Decorator
  */
-class LineBreakData extends AbstractData{
+class LineBreakData extends AbstractData
+{
     /**
      * @return string
      */
-    public function getData() : string
+    public function getData(): string
     {
         return $this->data->getData() . "<br>";
     }

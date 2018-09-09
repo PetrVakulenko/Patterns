@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: petrvakulenko
- * Date: 14.03.2018
- * Time: 17:19
- */
 
 namespace DesignPatterns\Adapter;
 

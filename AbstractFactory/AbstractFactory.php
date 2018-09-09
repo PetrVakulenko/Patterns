@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: petrvakulenko
- * Date: 02.03.2018
- * Time: 13:17
- */
 
 namespace DesignPatterns\AbstractFactory;
 
 /**
  * Interface Instance
+ *
  * @package DesignPatterns\AbstractFactory
  */
 interface Instance
@@ -22,6 +17,7 @@ interface Instance
 
 /**
  * Class AbstractInstance
+ *
  * @package DesignPatterns\AbstractFactory
  */
 abstract class AbstractInstance implements Instance
@@ -34,32 +30,37 @@ abstract class AbstractInstance implements Instance
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
-        return !empty($this->instanceName) ? "This is ".$this->instanceName : "";
+        return !empty($this->instanceName) ? "This is " . $this->instanceName : "";
     }
 }
 
 /**
  * Interface Factory
+ *
  * @package DesignPatterns\AbstractFactory
  */
-interface Factory{
+interface Factory
+{
     /**
      * @param string $factoryName
+     *
      * @return Factory
      */
-    public static function getFactory(string $factoryName) : Factory;
+    public static function getFactory(string $factoryName): Factory;
 
     /**
      * @param string $key
+     *
      * @return Instance
      */
-    public function getInstanceByKey(string $key) : Instance;
+    public function getInstanceByKey(string $key): Instance;
 }
 
 /**
  * Class AbstractFactory
+ *
  * @package DesignPatterns\AbstractFactory
  */
 abstract class AbstractFactory implements Factory
@@ -71,9 +72,10 @@ abstract class AbstractFactory implements Factory
 
     /**
      * @param string $factoryName
+     *
      * @return Factory
      */
-    public static function getFactory(string $factoryName) : Factory
+    public static function getFactory(string $factoryName): Factory
     {
         switch (strtolower($factoryName)) {
             case "form":
@@ -85,16 +87,18 @@ abstract class AbstractFactory implements Factory
 
     /**
      * @param string $key
+     *
      * @return Instance
      */
-    public function getInstanceByKey(string $key) : Instance
+    public function getInstanceByKey(string $key): Instance
     {
-            return $this->instances[$key];
+        return $this->instances[$key];
     }
 }
 
 /**
  * Class FormFactory
+ *
  * @package DesignPatterns\AbstractFactory
  */
 class FormFactory extends AbstractFactory
@@ -111,6 +115,7 @@ class FormFactory extends AbstractFactory
 
 /**
  * Class WebForm
+ *
  * @package DesignPatterns\AbstractFactory
  */
 class WebForm extends AbstractInstance
@@ -123,6 +128,7 @@ class WebForm extends AbstractInstance
 
 /**
  * Class LinuxForm
+ *
  * @package DesignPatterns\AbstractFactory
  */
 class LinuxForm extends AbstractInstance
@@ -136,6 +142,7 @@ class LinuxForm extends AbstractInstance
 
 /**
  * Class ButtonFactory
+ *
  * @package DesignPatterns\AbstractFactory
  */
 class ButtonFactory extends AbstractFactory
@@ -152,6 +159,7 @@ class ButtonFactory extends AbstractFactory
 
 /**
  * Class SubmitButton
+ *
  * @package DesignPatterns\AbstractFactory
  */
 class SubmitButton extends AbstractInstance
@@ -164,6 +172,7 @@ class SubmitButton extends AbstractInstance
 
 /**
  * Class SimpleButton
+ *
  * @package DesignPatterns\AbstractFactory
  */
 class SimpleButton extends AbstractInstance

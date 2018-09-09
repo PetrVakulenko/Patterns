@@ -1,19 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Petya
- * Date: 11.03.2018
- * Time: 10:51
- */
 
 require_once "Prototype.php";
 
-use DesignPatterns\Prototype\{
-    TerrainFactory,
-    Csv,
-    Xml,
-    Json
-};
+use DesignPatterns\Prototype\TerrainFactory;
+use DesignPatterns\Prototype\Csv;
+use DesignPatterns\Prototype\Xml;
+use DesignPatterns\Prototype\Json;
 
 /**
  * Создание фабрики с заданными параметрами прототипа

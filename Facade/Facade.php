@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: petrvakulenko
- * Date: 26.03.18
- * Time: 13:32
- */
 
 namespace DesignPatterns\Facade;
 
 /**
  * Class User
+ *
  * @package DesignPatterns\Facade
  */
 class User
@@ -29,6 +24,7 @@ class User
 
     /**
      * User constructor.
+     *
      * @param string $username
      * @param string $password
      */
@@ -41,7 +37,7 @@ class User
     /**
      * @return array
      */
-    public function getPreferences() : array
+    public function getPreferences(): array
     {
         //getting preferences
         return [
@@ -54,16 +50,16 @@ class User
     /**
      * @return array
      */
-    public function getLearning() : array
+    public function getLearning(): array
     {
         //getting learning
-        return ['courses' => [1,2,3] ];
+        return ['courses' => [1, 2, 3]];
     }
 
     /**
      * @return string
      */
-    public function getUser() : string
+    public function getUser(): string
     {
         return $this->username;
     }
@@ -71,6 +67,7 @@ class User
 
 /**
  * Class Auth
+ *
  * @package DesignPatterns\Facade
  */
 class Auth
@@ -82,16 +79,18 @@ class Auth
 
     /**
      * Auth constructor.
+     *
      * @param User $user
      */
-    public function __construct(User $user) {
+    public function __construct(User $user)
+    {
         $this->user = $user;
     }
 
     /**
      * @return bool
      */
-    public function authCheck() : bool
+    public function authCheck(): bool
     {
         //checking auth for current user;
         return !empty($this->user) ? true : false;
@@ -100,6 +99,7 @@ class Auth
 
 /**
  * Class Learning
+ *
  * @package DesignPatterns\Facade
  */
 class Learning
@@ -115,16 +115,19 @@ class Learning
 
     /**
      * Learning constructor.
+     *
      * @param User $user
      */
-    public function __construct(User $user) {
+    public function __construct(User $user)
+    {
         $this->user = $user;
     }
 
     /**
      *
      */
-    public function learningAssignment(){
+    public function learningAssignment()
+    {
         //Assignment learning;
         $this->learning = $this->user->getLearning();
     }
@@ -132,7 +135,7 @@ class Learning
     /**
      * @return array
      */
-    public function getLearning() : array
+    public function getLearning(): array
     {
         return $this->learning;
     }
@@ -140,6 +143,7 @@ class Learning
 
 /**
  * Class Preferences
+ *
  * @package DesignPatterns\Facade
  */
 class Preferences
@@ -155,23 +159,26 @@ class Preferences
 
     /**
      * Preferences constructor.
+     *
      * @param User $user
      */
-    public function __construct(User $user) {
+    public function __construct(User $user)
+    {
         $this->user = $user;
     }
 
     /**
      *
      */
-    public function setPreferences(){
+    public function setPreferences()
+    {
         $this->preferences = $this->user->getPreferences();
     }
 
     /**
      * @return array
      */
-    public function getPreferences() : array
+    public function getPreferences(): array
     {
         return $this->preferences;
     }
@@ -179,6 +186,7 @@ class Preferences
 
 /**
  * Class FacadeSession
+ *
  * @package DesignPatterns\Facade
  */
 class FacadeSession
@@ -202,6 +210,7 @@ class FacadeSession
 
     /**
      * FacadeSession constructor.
+     *
      * @param string $username
      * @param string $password
      */
@@ -220,7 +229,7 @@ class FacadeSession
     /**
      * @return array
      */
-    private function getPreferences() : array
+    private function getPreferences(): array
     {
         return $this->preferences->getPreferences();
     }
@@ -228,7 +237,7 @@ class FacadeSession
     /**
      * @return array
      */
-    private function getLearning() : array
+    private function getLearning(): array
     {
         return $this->learning->getLearning();
     }
@@ -236,7 +245,7 @@ class FacadeSession
     /**
      * @return string
      */
-    private function getUser() : string
+    private function getUser(): string
     {
         return $this->user->getUser();
     }
@@ -244,7 +253,7 @@ class FacadeSession
     /**
      * @return array
      */
-    public function getUserData() : array
+    public function getUserData(): array
     {
         return [
             "username" => $this->getUser(),

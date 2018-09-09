@@ -1,17 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Petya
- * Date: 11.03.2018
- * Time: 10:38
- */
 
 namespace DesignPatterns\Prototype;
 /**
  * Class DataType
+ *
  * @package DesignPatterns\Prototype
  */
-abstract class DataType {
+abstract class DataType
+{
     /**
      * @var string
      */
@@ -20,7 +16,7 @@ abstract class DataType {
     /**
      * @return string
      */
-    public function getType() : string
+    public function getType(): string
     {
         return $this->type ?? '';
     }
@@ -28,9 +24,11 @@ abstract class DataType {
 
 /**
  * Class Xml
+ *
  * @package DesignPatterns\Prototype
  */
-class Xml extends DataType {
+class Xml extends DataType
+{
     /**
      * @var string
      */
@@ -39,9 +37,11 @@ class Xml extends DataType {
 
 /**
  * Class Csv
+ *
  * @package DesignPatterns\Prototype
  */
-class Csv extends DataType {
+class Csv extends DataType
+{
     /**
      * @var string
      */
@@ -50,9 +50,11 @@ class Csv extends DataType {
 
 /**
  * Class Json
+ *
  * @package DesignPatterns\Prototype
  */
-class Json extends DataType {
+class Json extends DataType
+{
     /**
      * @var string
      */
@@ -62,7 +64,8 @@ class Json extends DataType {
 /**
  * Определение логики фабрики прототипов
  */
-class TerrainFactory {
+class TerrainFactory
+{
     /**
      * @var Xml
      */
@@ -78,11 +81,13 @@ class TerrainFactory {
 
     /**
      * TerrainFactory constructor.
+     *
      * @param Xml $xml
      * @param Csv $csv
      * @param Json $json
      */
-    public function __construct(Xml $xml, Csv $csv, Json $json) {
+    public function __construct(Xml $xml, Csv $csv, Json $json)
+    {
         $this->xml = $xml;
         $this->csv = $csv;
         $this->json = $json;
@@ -91,7 +96,7 @@ class TerrainFactory {
     /**
      * @return Xml
      */
-    public function getXml() : Xml
+    public function getXml(): Xml
     {
         return clone $this->xml;
     }
@@ -99,7 +104,7 @@ class TerrainFactory {
     /**
      * @return Csv
      */
-    public function getCsv() : Csv
+    public function getCsv(): Csv
     {
         return clone $this->csv;
     }
@@ -107,7 +112,7 @@ class TerrainFactory {
     /**
      * @return Json
      */
-    public function getJson() : Json
+    public function getJson(): Json
     {
         return clone $this->json;
     }
