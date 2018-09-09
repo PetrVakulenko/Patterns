@@ -48,14 +48,14 @@ interface Factory
      *
      * @return Factory
      */
-    public static function getFactory(string $factoryName): Factory;
+    public static function getFactory(\string $factoryName): Factory;
 
     /**
      * @param string $key
      *
      * @return Instance
      */
-    public function getInstanceByKey(string $key): Instance;
+    public function getInstanceByKey(\string $key): Instance;
 }
 
 /**
@@ -75,7 +75,7 @@ abstract class AbstractFactory implements Factory
      *
      * @return Factory
      */
-    public static function getFactory(string $factoryName): Factory
+    public static function getFactory(\string $factoryName): Factory
     {
         switch (strtolower($factoryName)) {
             case "form":
@@ -90,7 +90,7 @@ abstract class AbstractFactory implements Factory
      *
      * @return Instance
      */
-    public function getInstanceByKey(string $key): Instance
+    public function getInstanceByKey(\string $key): Instance
     {
         return $this->instances[$key];
     }

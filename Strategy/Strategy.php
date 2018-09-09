@@ -1,18 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: petrvakulenko
- * Date: 26.03.18
- * Time: 11:12
- */
 
 namespace DesignPatterns\Strategy;
 
 /**
  * Class StrategyContext
+ *
  * @package DesignPatterns\Strategy
  */
-class StrategyContext {
+class StrategyContext
+{
     /**
      * @var StrategyAdministrator|null
      */
@@ -24,9 +20,11 @@ class StrategyContext {
 
     /**
      * StrategyContext constructor.
+     *
      * @param User $user
      */
-    public function __construct(User $user) {
+    public function __construct(User $user)
+    {
         switch (true) {
             case $user instanceof AuthorizedUser:
                 $this->strategy = new StrategyAuthUser();
@@ -38,7 +36,7 @@ class StrategyContext {
                 $this->strategy = new StrategyAdministrator();
                 break;
         }
-        if (!empty($this->strategy)){
+        if (!empty($this->strategy)) {
             $this->user = $user;
         }
     }
@@ -47,12 +45,12 @@ class StrategyContext {
      * @return string
      * @throws \Exception
      */
-    public function userInfo() : string
+    public function userInfo(): string
     {
-        if (empty($this->user)){
-            throw new \Exception("Undefined user") ;
+        if (empty($this->user)) {
+            throw new \Exception("Undefined user");
         }
-        if (empty($this->strategy)){
+        if (empty($this->strategy)) {
             throw new \Exception("Undefined strategy");
         }
 
@@ -62,26 +60,32 @@ class StrategyContext {
 
 /**
  * Interface StrategyInterface
+ *
  * @package DesignPatterns\Strategy
  */
-interface StrategyInterface {
+interface StrategyInterface
+{
     /**
      * @param User $user
+     *
      * @return string
      */
-    public function showInfo(User $user) : string;
+    public function showInfo(User $user): string;
 }
 
 /**
  * Class StrategyAdministrator
+ *
  * @package DesignPatterns\Strategy
  */
-class StrategyAdministrator implements StrategyInterface {
+class StrategyAdministrator implements StrategyInterface
+{
     /**
      * @param User $user
+     *
      * @return string
      */
-    public function showInfo(User $user) : string
+    public function showInfo(User $user): string
     {
         return "Good afternoon administrator. Name: " . $user->getName() . ". Age: " . $user->getAge() . "!";
     }
@@ -89,14 +93,17 @@ class StrategyAdministrator implements StrategyInterface {
 
 /**
  * Class StrategyUnauthUser
+ *
  * @package DesignPatterns\Strategy
  */
-class StrategyUnauthUser implements StrategyInterface {
+class StrategyUnauthUser implements StrategyInterface
+{
     /**
      * @param User $user
+     *
      * @return string
      */
-    public function showInfo(User $user) : string
+    public function showInfo(User $user): string
     {
         return "Good afternoon guest.";
     }
@@ -104,14 +111,17 @@ class StrategyUnauthUser implements StrategyInterface {
 
 /**
  * Class StrategyAuthUser
+ *
  * @package DesignPatterns\Strategy
  */
-class StrategyAuthUser implements StrategyInterface {
+class StrategyAuthUser implements StrategyInterface
+{
     /**
      * @param User $user
+     *
      * @return string
      */
-    public function showInfo(User $user) : string
+    public function showInfo(User $user): string
     {
         return "Good afternoon. Name: " . $user->getName() . ". Age: " . $user->getAge() . "!";
     }
@@ -119,30 +129,34 @@ class StrategyAuthUser implements StrategyInterface {
 
 /**
  * Interface User
+ *
  * @package DesignPatterns\Strategy
  */
-interface User{
+interface User
+{
     /**
      * @return string
      */
-    public function getName() : string;
+    public function getName(): string;
 
     /**
      * @return string
      */
-    public function getAge() : string;
+    public function getAge(): string;
 
     /**
      * @return string
      */
-    public function getRole() : string;
+    public function getRole(): string;
 }
 
 /**
  * Class AbstractUser
+ *
  * @package DesignPatterns\Strategy
  */
-abstract class AbstractUser implements User{
+abstract class AbstractUser implements User
+{
     /**
      * @var string
      */
@@ -158,10 +172,11 @@ abstract class AbstractUser implements User{
 
     /**
      * AbstractUser constructor.
+     *
      * @param string $name_in
      * @param int $age_in
      */
-    public function __construct(string $name_in = '', int $age_in = 0)
+    public function __construct(\string $name_in = '', \int $age_in = 0)
     {
         $this->name = $name_in;
         $this->age = $age_in;
@@ -170,7 +185,7 @@ abstract class AbstractUser implements User{
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -178,7 +193,7 @@ abstract class AbstractUser implements User{
     /**
      * @return string
      */
-    public function getAge() : string
+    public function getAge(): string
     {
         return $this->age;
     }
@@ -186,7 +201,7 @@ abstract class AbstractUser implements User{
     /**
      * @return string
      */
-    public function getRole() : string
+    public function getRole(): string
     {
         return $this->role;
     }
@@ -194,9 +209,11 @@ abstract class AbstractUser implements User{
 
 /**
  * Class AuthorizedUser
+ *
  * @package DesignPatterns\Strategy
  */
-class AuthorizedUser extends AbstractUser{
+class AuthorizedUser extends AbstractUser
+{
     /**
      * @var string
      */
@@ -205,9 +222,11 @@ class AuthorizedUser extends AbstractUser{
 
 /**
  * Class AdministratorUser
+ *
  * @package DesignPatterns\Strategy
  */
-class AdministratorUser extends AbstractUser {
+class AdministratorUser extends AbstractUser
+{
     /**
      * @var string
      */
@@ -216,9 +235,11 @@ class AdministratorUser extends AbstractUser {
 
 /**
  * Class NullUser
+ *
  * @package DesignPatterns\Strategy
  */
-class NullUser extends AbstractUser {
+class NullUser extends AbstractUser
+{
     /**
      * @var string
      */

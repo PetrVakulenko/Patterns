@@ -4,26 +4,31 @@ namespace DesignPatterns\Adapter;
 
 /**
  * Interface ProductAdapter
+ *
  * @package DesignPatterns\Adapter
  */
-interface ProductAdapter {
+interface ProductAdapter
+{
     /**
      * @return string
      */
-    public function getProductInfo() : string;
+    public function getProductInfo(): string;
 }
 
 /**
  * Class AdapterFactory
+ *
  * @package DesignPatterns\Adapter
  */
-abstract class AdapterFactory implements ProductAdapter {
+abstract class AdapterFactory implements ProductAdapter
+{
     /**
      * @param $instance
+     *
      * @return mixed
      * @throws \Exception
      */
-    public static function getInstance($instance) : ProductAdapter
+    public static function getInstance($instance): ProductAdapter
     {
         /**
          * Simple creating Adapter instance
@@ -34,12 +39,12 @@ abstract class AdapterFactory implements ProductAdapter {
          * Getting name with using ReflectionClass and Namespace
          */
         $adapter = __NAMESPACE__ . "\\" .
-            (new \ReflectionClass($instance))->getShortName()."Adapter";
+            (new \ReflectionClass($instance))->getShortName() . "Adapter";
 
-        if (class_exists($adapter)){
+        if (class_exists($adapter)) {
             return new $adapter($instance);
         } else {
-            throw new \Exception("Undefined Adapter ".$adapter);
+            throw new \Exception("Undefined Adapter " . $adapter);
         }
     }
 
@@ -51,6 +56,7 @@ abstract class AdapterFactory implements ProductAdapter {
 
 /**
  * Class SimpleProduct
+ *
  * @package DesignPatterns\Adapter
  */
 class SimpleProduct
@@ -66,18 +72,20 @@ class SimpleProduct
 
     /**
      * SimpleProduct constructor.
+     *
      * @param string $title
      * @param int $price
      */
-    public function __construct(string $title, int $price) {
-        $this->title  = $title;
+    public function __construct(\string $title, \int $price)
+    {
+        $this->title = $title;
         $this->price = $price;
     }
 
     /**
      * @return string
      */
-    public function getPrice() : string
+    public function getPrice(): string
     {
         return $this->price;
     }
@@ -85,7 +93,7 @@ class SimpleProduct
     /**
      * @return string
      */
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -93,6 +101,7 @@ class SimpleProduct
 
 /**
  * Class SimpleProduct2
+ *
  * @package DesignPatterns\Adapter
  */
 class SimpleProduct2
@@ -108,18 +117,20 @@ class SimpleProduct2
 
     /**
      * SimpleProduct2 constructor.
+     *
      * @param string $title
      * @param int $price
      */
-    public function __construct(string $title, int $price) {
-        $this->title  = $title;
+    public function __construct(\string $title, \int $price)
+    {
+        $this->title = $title;
         $this->price = $price;
     }
 
     /**
      * @return string
      */
-    public function getPrice() : string
+    public function getPrice(): string
     {
         return $this->price;
     }
@@ -127,7 +138,7 @@ class SimpleProduct2
     /**
      * @return string
      */
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -135,6 +146,7 @@ class SimpleProduct2
 
 /**
  * Class AnotherProduct
+ *
  * @package DesignPatterns\Adapter
  */
 class AnotherProduct
@@ -158,13 +170,15 @@ class AnotherProduct
 
     /**
      * AnotherProduct constructor.
+     *
      * @param string $title
      * @param string $description
      * @param string $article
      * @param int $price
      */
-    public function __construct(string $title, string $description, string $article, int $price) {
-        $this->title  = $title;
+    public function __construct(\string $title, \string $description, \string $article, \int $price)
+    {
+        $this->title = $title;
         $this->description = $description;
         $this->article = $article;
         $this->price = $price;
@@ -173,7 +187,7 @@ class AnotherProduct
     /**
      * @return string
      */
-    public function getPrice() : string
+    public function getPrice(): string
     {
         return $this->price;
     }
@@ -181,7 +195,7 @@ class AnotherProduct
     /**
      * @return string
      */
-    public function getTitle() : string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -189,7 +203,7 @@ class AnotherProduct
     /**
      * @return string
      */
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -197,7 +211,7 @@ class AnotherProduct
     /**
      * @return string
      */
-    public function getArticle() : string
+    public function getArticle(): string
     {
         return $this->article;
     }
@@ -205,9 +219,11 @@ class AnotherProduct
 
 /**
  * Class SimpleProductAdapter
+ *
  * @package DesignPatterns\Adapter
  */
-class SimpleProductAdapter implements ProductAdapter{
+class SimpleProductAdapter implements ProductAdapter
+{
     /**
      * @var SimpleProduct
      */
@@ -215,27 +231,31 @@ class SimpleProductAdapter implements ProductAdapter{
 
     /**
      * SimpleProductAdapter constructor.
+     *
      * @param SimpleProduct $product
      */
-    function __construct(SimpleProduct $product) {
+    function __construct(SimpleProduct $product)
+    {
         $this->product = $product;
     }
 
     /**
      * @return string
      */
-    function getProductInfo() : string
+    function getProductInfo(): string
     {
-        return $this->product->getTitle() . PHP_EOL.
+        return $this->product->getTitle() . PHP_EOL .
             $this->product->getPrice() . PHP_EOL;
     }
 }
 
 /**
  * Class AnotherProductAdapter
+ *
  * @package DesignPatterns\Adapter
  */
-class AnotherProductAdapter implements ProductAdapter{
+class AnotherProductAdapter implements ProductAdapter
+{
     /**
      * @var AnotherProduct
      */
@@ -243,16 +263,18 @@ class AnotherProductAdapter implements ProductAdapter{
 
     /**
      * AnotherProductAdapter constructor.
+     *
      * @param AnotherProduct $product
      */
-    function __construct(AnotherProduct $product) {
+    function __construct(AnotherProduct $product)
+    {
         $this->product = $product;
     }
 
     /**
      * @return string
      */
-    function getProductInfo() : string
+    function getProductInfo(): string
     {
         return $this->product->getTitle() . PHP_EOL .
             $this->product->getDescription() . PHP_EOL .

@@ -32,7 +32,7 @@ abstract class AnimalCreator implements Animal
      *
      * @return Animal
      */
-    final public static function getInstance(string $className): Animal
+    final public static function getInstance(\string $className): Animal
     {
         $class = __NAMESPACE__ . "\\" . $className;
         return class_exists($class)
@@ -45,7 +45,7 @@ abstract class AnimalCreator implements Animal
      *
      * @param string $className
      */
-    public function __construct(string $className)
+    public function __construct(\string $className)
     {
         $this->className = $className;
     }

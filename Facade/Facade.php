@@ -28,7 +28,7 @@ class User
      * @param string $username
      * @param string $password
      */
-    public function __construct(string $username, string $password)
+    public function __construct(\string $username, \string $password)
     {
         $this->username = $username;
         $this->password = base64_decode($password . $this->hash);
@@ -214,7 +214,7 @@ class FacadeSession
      * @param string $username
      * @param string $password
      */
-    public function __construct(string $username, string $password)
+    public function __construct(\string $username, \string $password)
     {
         $this->user = new User($username, $password);
         $this->auth = new Auth($this->user);
