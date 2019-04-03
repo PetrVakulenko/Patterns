@@ -176,7 +176,7 @@ abstract class AbstractUser implements User
      * @param string $name_in
      * @param int $age_in
      */
-    public function __construct(\string $name_in = '', \int $age_in = 0)
+    public function __construct(string $name_in = '', int $age_in = 0)
     {
         $this->name = $name_in;
         $this->age = $age_in;
